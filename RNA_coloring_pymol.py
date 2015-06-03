@@ -1,8 +1,10 @@
 '''
-In pymol terminal:
-run test2QBG.py
+
+In pymol terminal, change directory to where RNA_coloring_pymol.py is stored, then:
+run RNA_coloring_pymol.py
 color_structure 2QBG
 '''
+
 import sys
 import cmd
 import csv
@@ -31,7 +33,7 @@ def split_range(nt_range):
 
 def convert_color_RGB(colorr):
 	'''
-	RGB colores are not defined in pymol.
+	RGB colors are not defined in pymol.
 	convert_color_RBG function defines RGB colors
 	Input : '#3300FF'
 	Output : "RGB_blue" ( which we have defined to be [51 , 0 , 255] )
@@ -92,18 +94,15 @@ def color_structure(pdb_file):
 	'''
 	this function colors each nucleotide in pymol
 	>>>print (data[1][0])
-	2886_2897	
+	2886_2897
 
-	2QBG must match the name of pdb file which is open 
+	2QBG must match the name of pdb file which is open
 	data[i][1] = color
 	data[i][0] = range of nucleotide
 	data[i][2] = chain
 
 	'''
-	if pdb_file in ['4Qs1','4qs1','4QS1', '4dS1']:
-		pdb_file = '4QS1'
-	if pdb_file in ['2qbg', '2qBg', '2qbG', '2Qbg', '2QBg','2QBG', '2qBG', '2QbG']:
-		pdb_file = '2QBG'
+	pdb_file = pdb_file.upper()
 
 	url = 'https://raw.githubusercontent.com/BGSU-RNA/3D-structure-coloring/master/csv_files/%s.csv' % pdb_file
 	response = urllib2.urlopen(url)
